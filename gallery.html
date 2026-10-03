@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeri · Manga Divanı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --iznik:#12355b; --deep:#0a2140; --turq:#2a9d9f; --tomato:#c1432e;
+  --gold:#d4a62a; --paper:#f0e4c8; --ink:#1d2433;
+  --serif:"Cormorant Garamond","Georgia",serif;
+  --sans:"Alegreya Sans","Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:4rem}
+body{
+  font-family:var(--sans);font-size:1.1rem;line-height:1.7;color:var(--paper);
+  background-color:var(--deep);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%232a9d9f' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M32 4l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z'/%3E%3Ccircle cx='32' cy='32' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+header{background:var(--iznik);border-bottom:3px double var(--gold);position:sticky;top:0;z-index:5}
+nav{max-width:68rem;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem}
+.brand{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.02em}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.4rem}
+nav ul a{text-decoration:none;font-weight:500;padding:.2rem 0;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a[aria-current]{border-bottom-color:var(--tomato)}
+
+main{max-width:68rem;margin:0 auto;padding:3rem 1.25rem 2rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,8vw,3.4rem);line-height:1.05;color:var(--gold);text-align:center;font-weight:700}
+.sub{text-align:center;margin-top:.4rem}
+h2{font-family:var(--serif);font-size:2rem;color:var(--gold);text-align:center;font-weight:700;margin:3rem 0 .3rem}
+.rule{height:14px;margin:1.2rem auto 2rem;width:12rem;background:
+  linear-gradient(var(--gold),var(--gold)) left center/4.5rem 2px no-repeat,
+  linear-gradient(var(--gold),var(--gold)) right center/4.5rem 2px no-repeat;position:relative}
+.rule::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;background:var(--tomato);transform:translate(-50%,-50%) rotate(45deg);outline:2px solid var(--gold)}
+h2+.rule{margin-top:.6rem}
+
+.grid{display:grid;gap:2rem 1.5rem;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr))}
+figure{text-align:center}
+/* arch-shaped frame; swap the .ph div for <img src="..." alt="..."> when you have artwork */
+.frame{
+  display:block;border:3px solid var(--gold);outline:2px solid var(--turq);outline-offset:4px;
+  border-radius:999px 999px 3px 3px / 5rem 5rem 3px 3px;overflow:hidden;background:var(--paper);
+}
+.frame img,.ph{display:block;width:100%;height:100%;object-fit:cover}
+.page .frame{aspect-ratio:2/3}
+.art .frame{aspect-ratio:1/1;border-radius:3px 3px 3px 3px;outline-offset:4px}
+.art .frame{border-radius:999px 999px 3px 3px / 4rem 4rem 3px 3px}
+.ph{display:flex;align-items:center;justify-content:center;color:var(--iznik);font-family:var(--serif);font-size:1.15rem;font-weight:600;
+  background:repeating-linear-gradient(45deg,#e8d9b6 0 10px,#f0e4c8 10px 20px)}
+figcaption{margin-top:1rem;font-family:var(--serif);font-size:1.25rem;font-weight:600;line-height:1.25}
+figcaption small{display:block;font-family:var(--sans);font-size:.95rem;font-weight:400;color:var(--turq)}
+
+footer{margin-top:3rem;background:var(--iznik);border-top:3px double var(--gold);text-align:center;padding:1.6rem 1.25rem;font-size:.95rem}
+footer span{color:var(--gold)}
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Ana menü">
+    <a class="brand" href="index.html">Manga Divanı</a>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="translation.html">Çeviri Günlüğü</a></li>
+      <li><a href="blog.html">Günlük</a></li>
+      <li><a href="gallery.html" aria-current="page">Galeri</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Galeri</h1>
+  <p class="sub">Manga sayfaları ve illüstrasyonlar.</p>
+
+  <h2>Manga Sayfaları</h2>
+  <div class="rule" aria-hidden="true"></div>
+  <div class="grid page">
+    <figure><div class="frame"><div class="ph" role="img" aria-label="Manga sayfası yer tutucusu">Sayfa 1</div></div><figcaption>Bölüm 1, sayfa 1<small>Ekim 2026</small></figcaption></figure>
+    <figure><div class="frame"><div class="ph" role="img" aria-label="Manga sayfası yer tutucusu">Sayfa 2</div></div><figcaption>Bölüm 1, sayfa 2<small>Ekim 2026</small></figcaption></figure>
+    <figure><div class="frame"><div class="ph" role="img" aria-label="Manga sayfası yer tutucusu">Sayfa 3</div></div><figcaption>Bölüm 1, sayfa 3<small>Ekim 2026</small></figcaption></figure>
+  </div>
+
+  <h2>İllüstrasyonlar</h2>
+  <div class="rule" aria-hidden="true"></div>
+  <div class="grid art">
+    <figure><div class="frame"><div class="ph" role="img" aria-label="İllüstrasyon yer tutucusu">Çizim 1</div></div><figcaption>Çizim 1<small>Eylül 2026</small></figcaption></figure>
+    <figure><div class="frame"><div class="ph" role="img" aria-label="İllüstrasyon yer tutucusu">Çizim 2</div></div><figcaption>Çizim 2<small>Eylül 2026</small></figcaption></figure>
+    <figure><div class="frame"><div class="ph" role="img" aria-label="İllüstrasyon yer tutucusu">Çizim 3</div></div><figcaption>Çizim 3<small>Ağustos 2026</small></figcaption></figure>
+    <figure><div class="frame"><div class="ph" role="img" aria-label="İllüstrasyon yer tutucusu">Çizim 4</div></div><figcaption>Çizim 4<small>Ağustos 2026</small></figcaption></figure>
+  </div>
+</main>
+
+<footer>
+  <p><span>✦</span> Manga Divanı · Azalea Creative Room <span>✦</span></p>
+</footer>
+</body>
+</html>
