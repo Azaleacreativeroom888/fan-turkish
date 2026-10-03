@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Çeviri Günlüğü · Manga Divanı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --iznik:#12355b; --deep:#0a2140; --turq:#2a9d9f; --tomato:#c1432e;
+  --gold:#d4a62a; --paper:#f0e4c8; --paper-dk:#e0d0a8; --ink:#1d2433;
+  --serif:"Cormorant Garamond","Georgia",serif;
+  --sans:"Alegreya Sans","Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:4rem}
+body{
+  font-family:var(--sans);font-size:1.08rem;line-height:1.7;color:var(--paper);
+  background-color:var(--deep);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%232a9d9f' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M32 4l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z'/%3E%3Ccircle cx='32' cy='32' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+header{background:var(--iznik);border-bottom:3px double var(--gold);position:sticky;top:0;z-index:5}
+nav{max-width:68rem;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem}
+.brand{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.02em}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.4rem}
+nav ul a{text-decoration:none;font-weight:500;padding:.2rem 0;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a[aria-current]{border-bottom-color:var(--tomato)}
+
+.title{text-align:center;padding:3rem 1.25rem 0}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,8vw,3.4rem);line-height:1.05;color:var(--gold);font-weight:700}
+.sub{margin-top:.4rem}
+.rule{height:14px;margin:1.2rem auto 0;width:12rem;background:
+  linear-gradient(var(--gold),var(--gold)) left center/4.5rem 2px no-repeat,
+  linear-gradient(var(--gold),var(--gold)) right center/4.5rem 2px no-repeat;position:relative}
+.rule::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;background:var(--tomato);transform:translate(-50%,-50%) rotate(45deg);outline:2px solid var(--gold)}
+
+.layout{max-width:66rem;margin:2.5rem auto 4rem;padding:0 1.25rem;display:flex;gap:2.2rem;align-items:flex-start}
+.main-col{flex:3;min-width:0}
+.sidebar-col{flex:1;min-width:13rem}
+
+/* sidebar */
+.sidebar-block{background:var(--paper);color:var(--ink);border:3px solid var(--gold);outline:2px solid var(--turq);outline-offset:4px;padding:1.3rem 1.3rem;position:sticky;top:5.5rem}
+.sidebar-block h3{font-family:var(--serif);font-size:1.3rem;color:var(--iznik);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:2px solid var(--paper-dk)}
+.sidebar-link{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--iznik);font-weight:700;font-size:.95rem;padding:.6rem .4rem;border-bottom:1px dashed var(--paper-dk);transition:background .2s,padding-left .2s,color .2s}
+.sidebar-link:last-child{border-bottom:0}
+.sidebar-link::before{content:"";width:.5rem;height:.5rem;background:var(--tomato);transform:rotate(45deg);flex-shrink:0}
+.sidebar-link:hover{background:var(--paper-dk);color:var(--tomato);padding-left:.8rem}
+
+.back-link{display:inline-block;color:var(--gold);text-decoration:none;font-weight:700;margin-bottom:1.6rem;border-bottom:2px solid transparent}
+.back-link:hover{border-bottom-color:var(--gold)}
+
+/* note card */
+.note{background:var(--paper);color:var(--ink);border:3px solid var(--gold);outline:2px solid var(--turq);outline-offset:4px;margin-bottom:2.4rem}
+.note-head{background:var(--iznik);color:var(--paper);padding:1rem 1.4rem;display:flex;gap:1rem;align-items:flex-start}
+.badge{background:var(--gold);color:var(--deep);font-family:var(--serif);font-weight:700;font-size:1.05rem;width:2rem;height:2rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transform:rotate(45deg);margin:.2rem .3rem 0 .2rem}
+.badge b{transform:rotate(-45deg);font-weight:700}
+.jp{font-size:1.15rem;line-height:1.55}
+.jp small{display:block;font-size:.85rem;opacity:.7;margin-top:2px}
+.tr{background:var(--tomato);color:#fff;padding:.9rem 1.4rem .9rem 4rem;font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.4rem;line-height:1.35;border-top:2px solid #8f2e1d;border-bottom:2px solid #8f2e1d;position:relative}
+.tr::before{content:"🇹🇷";position:absolute;left:1.3rem;top:50%;transform:translateY(-50%);font-size:1.3rem;font-style:normal}
+
+.toggle{width:100%;background:none;border:0;color:var(--iznik);cursor:pointer;font:700 .95rem var(--sans);padding:.75rem 1.4rem;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.toggle:hover{background:var(--paper-dk)}
+.body{display:none;padding:1.1rem 1.4rem 1.4rem;border-top:1px solid var(--paper-dk)}
+.body.open{display:block}
+.body h4{font-family:var(--serif);font-size:1.15rem;color:var(--tomato);margin-bottom:.8rem}
+.row{display:grid;grid-template-columns:11rem 1fr;gap:.3rem 1.2rem;padding:.7rem 0;border-top:1px dashed var(--paper-dk)}
+.row:first-of-type{border-top:0}
+.w{font-family:var(--serif);font-weight:700;font-size:1.2rem;color:var(--tomato);line-height:1.3}
+.d{font-size:.95rem;line-height:1.75}
+.d .ref{opacity:.7;font-size:.88rem}
+.tag{display:inline-block;background:var(--paper-dk);color:var(--iznik);font-size:.75rem;font-weight:700;padding:0 .5rem;margin-left:.3rem;vertical-align:middle}
+
+footer{background:var(--iznik);border-top:3px double var(--gold);text-align:center;padding:1.6rem 1.25rem;font-size:.95rem}
+footer span{color:var(--gold)}
+
+@media (max-width:760px){
+  .layout{flex-direction:column}
+  .sidebar-col{width:100%}
+  .sidebar-block{position:static}
+  .row{grid-template-columns:1fr}
+  .tr{padding-left:3.4rem;font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Ana menü">
+    <a class="brand" href="index.html">Manga Divanı</a>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="translation.html" aria-current="page">Çeviri Günlüğü</a></li>
+      <li><a href="blog.html">Günlük</a></li>
+      <li><a href="gallery.html">Galeri</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="title">
+  <h1>Çeviri Günlüğü</h1>
+  <p class="sub">Japonca asıl metin → Türkçe çeviri + kelime ve dilbilgisi notları</p>
+  <div class="rule" aria-hidden="true"></div>
+</div>
+
+<div class="layout">
+  <div class="main-col">
+    <a class="back-link" href="index.html">← Ana Sayfa</a>
+
+    <!-- NOT 0: roman çevirisi -->
+    <article class="note">
+      <div class="note-head">
+        <div class="badge"><b>★</b></div>
+        <div class="jp">「私の人生は、その瞬間から始まったような気がする。」<small>小説翻訳 / Edebî çeviri</small></div>
+      </div>
+      <p class="tr">Sanki hayatım o andan itibaren başlamış gibi geliyor bana.</p>
+      <button class="toggle" onclick="toggleNote(this)" aria-expanded="true"><span>Kelime ve dilbilgisi analizi</span><span class="arrow">▲</span></button>
+      <div class="body open">
+        <h4>Kelime analizi</h4>
+        <div class="row"><div class="w">Sanki … gibi</div><div class="d">「まるで〜のような」。2つで1組の表現。<br><span class="ref">「〜ような気がする」の曖昧さを出すために使った。</span></div></div>
+        <div class="row"><div class="w">hayatım</div><div class="d">hayat（人生）＋ -ım（私の）<span class="tag">iyelik eki</span><br><span class="ref">所有を表す語尾。日本語の「の」にあたるものが語の後ろにくっつく。</span></div></div>
+        <div class="row"><div class="w">o andan itibaren</div><div class="d">o＝その ／ an＝瞬間 ／ -dan＝〜から<span class="tag">çıkma durumu</span> ／ itibaren＝以降<br><span class="ref">「その瞬間から」。</span></div></div>
+        <div class="row"><div class="w">başlamış</div><div class="d">başla-（始まる）＋ -mış<span class="tag">-mış geçmiş zaman</span><br>-mış は「〜したらしい／〜したようだ」という推測や伝聞の過去。「〜ような気がする」とよく合う。</div></div>
+        <div class="row"><div class="w">gibi geliyor bana</div><div class="d">「〜のように感じられる」。<em>bana</em>＝私に（与格）。<br><span class="ref">gelmek（来る）が「〜と思える」の意味で使われている。</span></div></div>
+      </div>
+    </article>
+
+    <!-- NOT 1 -->
+    <article class="note">
+      <div class="note-head">
+        <div class="badge"><b>1</b></div>
+        <div class="jp">「よし！河童を捕まえて一攫千金目指すぞ！」<small>Orijinal metin / Japonca diyalog</small></div>
+      </div>
+      <p class="tr">Haydi! Kappa'yı yakalayıp bir gecede zengin olacağım!</p>
+      <button class="toggle" onclick="toggleNote(this)" aria-expanded="true"><span>Kelime ve dilbilgisi analizi</span><span class="arrow">▲</span></button>
+      <div class="body open">
+        <h4>Kelime analizi</h4>
+        <div class="row"><div class="w">Haydi!</div><div class="d">「よし！」「さあ！」にあたる掛け声。</div></div>
+        <div class="row"><div class="w">Kappa'yı</div><div class="d">河童。日本文化の語なので <em>kappa</em> のまま使った。<br>-yı は「〜を」<span class="tag">belirtme durumu</span>。固有名詞扱いなのでアポストロフィを入れる。</div></div>
+        <div class="row"><div class="w">yakalayıp</div><div class="d">yakala-（捕まえる）＋ -ıp<span class="tag">zarf-fiil</span><br>「捕まえて」。動詞をつなぐ「〜して」の形。</div></div>
+        <div class="row"><div class="w">bir gecede</div><div class="d">bir＝1つの ／ gece＝夜 ／ -de＝〜で<br>「一晩で」。一攫千金の「一気に」を表した。</div></div>
+        <div class="row"><div class="w">zengin olacağım</div><div class="d">zengin olmak（金持ちになる）の未来形<span class="tag">gelecek zaman</span><br>-acak ＋ -ım（私は）。olacak＋ım で k が ğ に変わる。</div></div>
+      </div>
+    </article>
+
+    <!-- NOT 2 -->
+    <article class="note">
+      <div class="note-head">
+        <div class="badge"><b>2</b></div>
+        <div class="jp">「借金作ってなにしてるの？」<small>Orijinal metin / Japonca diyalog</small></div>
+      </div>
+      <p class="tr">Borç yapmışsın, ne yapıyorsun sen?</p>
+      <button class="toggle" onclick="toggleNote(this)" aria-expanded="true"><span>Kelime ve dilbilgisi analizi</span><span class="arrow">▲</span></button>
+      <div class="body open">
+        <h4>Kelime analizi</h4>
+        <div class="row"><div class="w">Borç yapmışsın</div><div class="d">borç＝借金 ／ yapmak＝する・作る ／ -mış＋-sın＝〜したんだね<span class="tag">-mış geçmiş zaman</span><br>-mış は「今それを知った」驚きや呆れも表す。ここでは「借金してたのか」というニュアンス。</div></div>
+        <div class="row"><div class="w">ne</div><div class="d">「何」。疑問詞。</div></div>
+        <div class="row"><div class="w">yapıyorsun</div><div class="d">yap-＋ -ıyor ＋ -sun<span class="tag">şimdiki zaman</span><br>「しているところ」。-yor が現在進行形で、-sun が「あなたは」。</div></div>
+        <div class="row"><div class="w">sen</div><div class="d">「あなた」。主語は省けるが、責める強さを出すためにあえて残した。</div></div>
+      </div>
+    </article>
+
+    <!-- NOT 3 -->
+    <article class="note">
+      <div class="note-head">
+        <div class="badge"><b>3</b></div>
+        <div class="jp">「あんたなんか人間じゃない」<small>Orijinal metin / Japonca diyalog</small></div>
+      </div>
+      <p class="tr">Sen insan bile değilsin.</p>
+      <button class="toggle" onclick="toggleNote(this)" aria-expanded="true"><span>Kelime ve dilbilgisi analizi</span><span class="arrow">▲</span></button>
+      <div class="body open">
+        <h4>Kelime analizi</h4>
+        <div class="row"><div class="w">Sen</div><div class="d">「あんた」。親しい相手や目下に使う「あなた」。<br><span class="ref">「あんた」の突き放した調子を出すため、主語を残した。</span></div></div>
+        <div class="row"><div class="w">insan</div><div class="d">「人間」。</div></div>
+        <div class="row"><div class="w">bile</div><div class="d">「〜さえ・〜すら」<span class="tag">pekiştirme</span><br>否定文と合わさると「〜ですらない」。「〜なんか」の見下す感じにあたる。</div></div>
+        <div class="row"><div class="w">değilsin</div><div class="d">değil（〜ではない）＋ -sin（あなたは）<span class="tag">olumsuzluk</span><br>名詞の否定は <em>değil</em> を使う。</div></div>
+      </div>
+    </article>
+
+    <!-- Yeni not eklemek için bir <article class="note"> bloğunu kopyalayın. -->
+  </div>
+
+  <aside class="sidebar-col">
+    <div class="sidebar-block">
+      <h3>📂 メニュー</h3>
+      <a class="sidebar-link" href="grammar.html">文法ノート</a>
+      <a class="sidebar-link" href="novel.html">小説翻訳</a>
+      <a class="sidebar-link" href="studyblog.html">勉強のひとことブログ</a>
+      <a class="sidebar-link" href="dictionary.html">辞書</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <p><span>✦</span> Manga Divanı · Azalea Creative Room <span>✦</span></p>
+</footer>
+
+<script>
+function toggleNote(btn){
+  var body=btn.nextElementSibling;
+  var open=body.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open);
+  btn.querySelector('.arrow').textContent=open?'▲':'▼';
+}
+</script>
+</body>
+</html>
