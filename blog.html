@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Günlük · Manga Divanı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --iznik:#12355b; --deep:#0a2140; --turq:#2a9d9f; --tomato:#c1432e;
+  --gold:#d4a62a; --paper:#f0e4c8; --ink:#1d2433;
+  --serif:"Cormorant Garamond","Georgia",serif;
+  --sans:"Alegreya Sans","Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:4rem}
+body{
+  font-family:var(--sans);font-size:1.1rem;line-height:1.7;color:var(--paper);
+  background-color:var(--deep);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%232a9d9f' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M32 4l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z'/%3E%3Ccircle cx='32' cy='32' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+header{background:var(--iznik);border-bottom:3px double var(--gold);position:sticky;top:0;z-index:5}
+nav{max-width:68rem;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem}
+.brand{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.02em}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.4rem}
+nav ul a{text-decoration:none;font-weight:500;padding:.2rem 0;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a[aria-current]{border-bottom-color:var(--tomato)}
+
+main{max-width:40rem;margin:0 auto;padding:3rem 1.25rem 2rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,8vw,3.4rem);line-height:1.05;color:var(--gold);text-align:center;font-weight:700}
+.sub{text-align:center;margin-top:.4rem}
+.rule{height:14px;margin:1.2rem auto 2.2rem;width:12rem;background:
+  linear-gradient(var(--gold),var(--gold)) left center/4.5rem 2px no-repeat,
+  linear-gradient(var(--gold),var(--gold)) right center/4.5rem 2px no-repeat;position:relative}
+.rule::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;background:var(--tomato);transform:translate(-50%,-50%) rotate(45deg);outline:2px solid var(--gold)}
+
+/* timeline: one narrow column, newest first, date only */
+.feed{background:var(--paper);color:var(--ink);border:3px solid var(--gold);outline:2px solid var(--turq);outline-offset:5px;border-radius:2px}
+.post{padding:1.2rem 1.5rem 1.3rem;border-bottom:1px solid #cdbb90}
+.post:last-child{border-bottom:0}
+.post time{display:block;font-family:var(--serif);font-weight:700;font-size:1.05rem;color:var(--tomato);margin-bottom:.15rem}
+.post p{font-size:1.1rem}
+.post p+p{margin-top:.6rem}
+.post:hover{background:#f7eed8}
+
+footer{margin-top:2rem;background:var(--iznik);border-top:3px double var(--gold);text-align:center;padding:1.6rem 1.25rem;font-size:.95rem}
+footer span{color:var(--gold)}
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Ana menü">
+    <a class="brand" href="index.html">Manga Divanı</a>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="translation.html">Çeviri Günlüğü</a></li>
+      <li><a href="blog.html" aria-current="page">Günlük</a></li>
+      <li><a href="gallery.html">Galeri</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Günlük</h1>
+  <p class="sub">Kısa notlar, her biri kendi tarihiyle.</p>
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- Yeni bir not eklemek için bir <article class="post"> bloğunu en üste kopyalayın. -->
+  <section class="feed" aria-label="Günlük notları">
+    <article class="post">
+      <time datetime="2026-10-04">4 Ekim 2026</time>
+      <p>Bugün manga sayfasının tonlarını bitirdim. Gözlerim yorgun ama sayfa güzel göründü.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-10-02">2 Ekim 2026</time>
+      <p>Çeviri dersinde bir cümlede bütün öğleden sonrayı harcadık. Japoncadaki o yumuşak ton Türkçede nasıl duyulur?</p>
+      <p>Cevabı hâlâ bilmiyorum, ama not defterim doldu.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-09-29">29 Eylül 2026</time>
+      <p>Yeni sitenin ilk sayfası açıldı. Merhaba, Türkçe okuyanlar!</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p><span>✦</span> Manga Divanı · Azalea Creative Room <span>✦</span></p>
+</footer>
+</body>
+</html>
